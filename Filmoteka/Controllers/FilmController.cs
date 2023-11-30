@@ -24,9 +24,20 @@ namespace Filmoteka.Controllers
 
 
         // GET: FilmController/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null || _context.Films == null)
+            {
+                return NotFound();
+            }
+
+            var film = await _context.Films.FirstOrDefaultAsync(f => f.Id == id);
+            if (film == null)
+            {
+                return NotFound();
+            }
+
+            return View(film);
         }
 
         // GET: FilmController/Create
