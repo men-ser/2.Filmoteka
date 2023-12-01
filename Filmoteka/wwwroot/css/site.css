@@ -18,7 +18,8 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    
 }
 
 .img {width: 40px; height: 60px}
@@ -27,3 +28,53 @@ body {
     display: flex
     
 }
+.width1 {
+    width: 800px;
+}
+
+.width {
+    width: 500px;
+    padding:0 15px;
+}
+.back {
+    margin: 0 auto;
+    background: rgba(255,255,255, 0.8);
+}
+.img-back {
+    background-attachment: fixed;
+    border: 2px solid red;
+    background-position: center;
+    background-image: url("/image/cinema.jpg");
+}
+
+.myBtn {
+    color: #fff;
+    background-color: #674EA7;
+    border-color: #351C75;
+    text-decoration: none;
+}
+
+    .myBtn:hover {
+        color: #fff;
+        background-color: #8E7CC3;
+        border-color: #B4A7D6;
+        text-decoration: none;
+    }
+    .myBtn:active {
+        color: #fff;
+        background-color: #351C75;
+        border-color: #20124D;
+        text-decoration: none;
+    }
+
+.whiteBack {
+    color: red;
+    text-shadow: rgba(255,255,255, 0.8) 3px 3px 5px;
+}
+.m-center {
+    margin: auto;
+}
+.m-l-10{
+    margin-left:10px;
+}
+/*box-shadow: rgba(255,255,255, 0.8) 10px 10px inset; background-color: rgba(255,255,255, 0.7);*/

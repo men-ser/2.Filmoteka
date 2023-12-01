@@ -11,7 +11,7 @@
 <div>
     <h4>Film</h4>
     <hr />
-    <dl class="row">
+    <dl class="row m-l-10">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -50,9 +50,9 @@
         </dd>
     </dl>
     
-    <form asp-action="View">
+    <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input class="m-l-10" type="submit" value="Delete" class="btn btn-danger" /> 
+        <a class="btn myBtn m-l-10" asp-action="Index">Back to List</a>
     </form>
 </div>

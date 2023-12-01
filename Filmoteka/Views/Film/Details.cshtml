@@ -13,7 +13,7 @@
     <h4>Film</h4>
     <hr />
     <div class="container">
-        <div class="flex-column">
+        <div class="flex-column m-l-10">
     <dl class="row ">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
@@ -68,6 +68,6 @@
     </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn myBtn m-l-10" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> 
+    <a class="btn myBtn m-l-10" asp-action="Index">Back to List</a>
 </div>
