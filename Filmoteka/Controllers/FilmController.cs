@@ -8,10 +8,12 @@ namespace Filmoteka.Controllers
 
     {
         private readonly FilmContext _context;
+        readonly IWebHostEnvironment _appEnvironment;
 
-        public FilmController(FilmContext context)
+        public FilmController(FilmContext context, IWebHostEnvironment appEnvironment)
         {
             _context = context;
+            _appEnvironment = appEnvironment;
         }
 
         // GET: FilmController
@@ -49,14 +51,36 @@ namespace Filmoteka.Controllers
         // POST: FilmController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Director,Genre,Year,Poster,Description")] Film film)
+        public async Task<IActionResult> Create([Bind("Id,Name,Director,Genre,Year,Poster,Description")] Film film, IFormFile uploadedFile)
         {
-            if (ModelState.IsValid)
+            if (film.Description.Length < 10)
+                ModelState.AddModelError("", "Описание фильма должно быть более 10 символов.");
+            if (!film.Director.Contains(" "))
+                ModelState.AddModelError("", "В строке режисер должна быть указано Имя и Фамилия");
+
+
+            if (uploadedFile != null)
             {
-                _context.Add(film);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                string path = "~/image/" + uploadedFile.FileName; // имя файла
+
+                // Сохраняем файл в папку Files в каталоге wwwroot
+                // Для получения полного пути к каталогу wwwroot
+                // применяется свойство WebRootPath объекта IWebHostEnvironment
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await uploadedFile.CopyToAsync(fileStream); // копируем файл в поток
+                }
+                film.Poster =  path ;
+               
+                if (ModelState.IsValid)
+                {
+                    _context.Add(film);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+
             }
+                        
             return View();
 
         }
