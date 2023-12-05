@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using Filmoteka.Annotations;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Filmoteka.Models
@@ -13,7 +14,7 @@ namespace Filmoteka.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Необходимо ввести данные по режиссеру")]
-        [RegularExpression(@"[A-Za-zА-Яа-я ,_.]{1,}", ErrorMessage = "Допустимо буквы, пробел и символи ,_.")]
+        [RegularExpression(@"[а-яА-ЯёЁa-zA-Z .]{1,}", ErrorMessage = "Можно вводить буквы, точку и пробел")]
         [Display(Name = "Режиссер")]
         public string Director { get; set; }
 
@@ -27,8 +28,10 @@ namespace Filmoteka.Models
         public int Year { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать путь к постеру")]
+        [ReservedImgAttribute(new string[] { "img1", }, ErrorMessage = "Недопустимое имя файла")]
         [Display(Name = "Постер")]
         public string Poster { get; set; }
+        //"img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10" 
 
         [Required(ErrorMessage = "Необходимо ввести описание фильма")]
         [Display(Name = "Краткое описание")]
