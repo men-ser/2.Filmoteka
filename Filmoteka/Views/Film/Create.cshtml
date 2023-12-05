@@ -5,25 +5,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1 class="ps-lg-3">Create</h1>
 
-<h4>Film</h4>
+<h4 class="ps-lg-3">Film</h4>
 <hr />
 <div class="row width1">
     <div class="col-md-4 m-l-10">
         <form asp-action="Create" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div asp-validation-summary="ModelOnly" class="mytext-danger "></div>
+            <div class="form-group ">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control width" />
+                <input asp-for="Name" class="form-control width " />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Director" class="control-label"></label>
-                <input asp-for="Director" class="form-control width" />
+                <input asp-for="Director" class="form-control width " />
                 <span asp-validation-for="Director" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group ">
                 <label asp-for="Genre" class="control-label"></label>
                 <input asp-for="Genre" class="form-control width" />
                 <span asp-validation-for="Genre" class="text-danger"></span>
@@ -34,17 +34,12 @@
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <div class="container myWrap ">
-                   <div class="form-group flex flex-column ">
-                    <label asp-for="Poster" class="control-label"></label>
-                    <input asp-for="Poster" class="form-control width" />
-                    <span asp-validation-for="Poster" class="text-danger"></span>
-                    </div>
-                   <div>
+                <div class="">
+                   <label asp-for="Poster" class="control-label"></label>
+                   <input asp-for="Poster" class="form-control width" />
+                   <span asp-validation-for="Poster" class="text-danger"></span>
                     <input type="file" name="uploadedFile" />
-                   <!-- <input type="submit" value="Загрузить" />-->
-                    </div>
-                </div>
+               </div>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>

@@ -29,7 +29,7 @@ body {
     
 }
 .width1 {
-    width: 800px;
+    width: 700px;
 }
 
 .width {
@@ -89,5 +89,22 @@ body {
     border: 2px solid green;
 }
 
-#showDetails{ max-width: 500px;}
+.mytext-danger {
+    border: 2px double red;
+    background-color: #E0830A;
+    color:black;
+    font-size:0.7em;
+    padding:0 5px;
+    width:500px;
+    text-decoration: none;
+
+}
+
+.form-control {
+    box-shadow: 4px 4px 10pt 4pt #D3D3D3;
+   }
+
+#showDetails {
+    max-width: 500px;
+}
 /*box-shadow: rgba(255,255,255, 0.8) 10px 10px inset; background-color: rgba(255,255,255, 0.7);*/

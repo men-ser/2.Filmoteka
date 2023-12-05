@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<h1 class="ps-lg-3">Edit</h1>
 
-<h4>Film</h4>
+<h4 class="ps-lg-3">Film</h4>
 <hr />
 <div class="row width1">
     <div class="col-md-4 m-l-10">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="mytext-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -35,9 +35,12 @@
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Poster" class="control-label"></label>
-                <input asp-for="Poster" class="form-control width" />
-                <span asp-validation-for="Poster" class="text-danger"></span>
+                <div >
+                    <label asp-for="Poster" class="control-label"></label>
+                    <input asp-for="Poster" class="form-control width" />
+                    <span asp-validation-for="Poster" class="text-danger"></span>
+                    <input type="file" name="uploadedFile" />
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
@@ -55,3 +58,13 @@
     <a class="btn myBtn m-l-10" asp-action="Index">Back to List</a>
 </div>
 
+
+
+                <!--
+
+    <div class="form-group">
+    <label asp-for="Poster" class="control-label"></label>
+    <input asp-for="Poster" class="form-control width" />
+    <span asp-validation-for="Poster" class="text-danger"></span>
+</div>
+                -->

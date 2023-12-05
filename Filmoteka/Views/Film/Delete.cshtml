@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Delete</h1>
+<h1 class="ps-lg-3">Delete</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="ps-lg-3">Are you sure you want to delete this?</h3>
 <div>
-    <h4>Film</h4>
+    <h4 class="ps-lg-3">Film</h4>
     <hr />
     <dl class="row m-l-10">
         <dt class = "col-sm-2">
@@ -52,7 +52,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input class="m-l-10" type="submit" value="Delete" class="btn btn-danger" /> 
+        <input class="btn btn-danger m-l-10" type="submit" value="Delete"/>
         <a class="btn myBtn m-l-10" asp-action="Index">Back to List</a>
     </form>
 </div>

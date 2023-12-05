@@ -7,10 +7,10 @@
     
 }
 
-<h1>Details</h1>
+<h1 class="ps-lg-3">Details</h1>
 
 <div>
-    <h4>Film</h4>
+    <h4 class="ps-lg-3">Film</h4>
     <hr />
     <div class="container">
         <div>
@@ -57,10 +57,10 @@
 
         <div class="flex-column">
             <div class="col-sm-10">
-                @{
+                @* @{
                     var path = @"~/image/" + @Model.Poster + ".jpg";
-                }
-                <img src="@Url.Content(path)" alt="poster" width="400" height="600" />
+                } *@
+                <img src="@Url.Content(@Model.Poster)" alt="poster" width="400" height="600" />
 
             <div/>
         </div>
