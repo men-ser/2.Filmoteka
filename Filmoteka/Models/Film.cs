@@ -28,10 +28,9 @@ namespace Filmoteka.Models
         public int Year { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать путь к постеру")]
-        [ReservedImgAttribute(new string[] { "img1", }, ErrorMessage = "Недопустимое имя файла")]
+        [ReservedImgAttribute(new string[] { "test2", }, ErrorMessage = "Такое имя файла уже используется")]
         [Display(Name = "Постер")]
         public string Poster { get; set; }
-        //"img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10" 
 
         [Required(ErrorMessage = "Необходимо ввести описание фильма")]
         [Display(Name = "Краткое описание")]

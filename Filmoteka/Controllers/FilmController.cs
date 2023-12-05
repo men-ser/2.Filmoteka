@@ -53,25 +53,22 @@ namespace Filmoteka.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Director,Genre,Year,Poster,Description")] Film film, IFormFile uploadedFile)
         {
-            if (film.Description.Length < 10)
+            if (film.Description == null || film.Description.Length < 10)
                 ModelState.AddModelError("", "Описание фильма должно быть более 10 символов.");
-            if (!film.Director.Contains(" "))
-                ModelState.AddModelError("", "В строке режисер должна быть указано Имя и Фамилия");
+            if (film.Director == null || !film.Director.Contains(" "))
+                ModelState.AddModelError("", "В строке режиссер должна быть указано Имя и Фамилия");
 
 
             if (uploadedFile != null)
             {
-                string path = "~/image/" + uploadedFile.FileName; // имя файла
+                string path = "/image/" + uploadedFile.FileName;
 
-                // Сохраняем файл в папку Files в каталоге wwwroot
-                // Для получения полного пути к каталогу wwwroot
-                // применяется свойство WebRootPath объекта IWebHostEnvironment
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
-                    await uploadedFile.CopyToAsync(fileStream); // копируем файл в поток
+                    await uploadedFile.CopyToAsync(fileStream); 
                 }
-                film.Poster =  path ;
-               
+
+                film.Poster =  '~'+path ;
                 if (ModelState.IsValid)
                 {
                     _context.Add(film);
@@ -80,7 +77,8 @@ namespace Filmoteka.Controllers
                 }
 
             }
-                        
+            else ModelState.AddModelError("", "Необходимо добавить файл для Постера");
+
             return View();
 
         }
@@ -104,17 +102,28 @@ namespace Filmoteka.Controllers
         // POST: FilmController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Director,Genre,Year,Poster,Description")] Film film)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Director,Genre,Year,Poster,Description")] Film film, IFormFile uploadedFile)
         {
             if (id != film.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (uploadedFile != null)
             {
+                if (ModelState.IsValid)
+                {
+                
                 try
                 {
+                    string path = "/image/" + uploadedFile.FileName; // имя файла
+
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        await uploadedFile.CopyToAsync(fileStream); // копируем файл в поток
+                    }
+
+                    film.Poster = '~' + path;
                     _context.Update(film);
                     await _context.SaveChangesAsync();
                 }
@@ -130,7 +139,10 @@ namespace Filmoteka.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
+                }
             }
+            else ModelState.AddModelError("", "Необходимо добавить файл для Постера");
+
             return View(film);
         }
 
