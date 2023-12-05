@@ -11,7 +11,7 @@
 <hr />
 <div class="row width1">
     <div class="col-md-4 m-l-10">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -34,13 +34,21 @@
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Poster" class="control-label"></label>
-                <input asp-for="Poster" class="form-control width" />
-                <span asp-validation-for="Poster" class="text-danger"></span>
+                <div class="container myWrap ">
+                   <div class="form-group flex flex-column ">
+                    <label asp-for="Poster" class="control-label"></label>
+                    <input asp-for="Poster" class="form-control width" />
+                    <span asp-validation-for="Poster" class="text-danger"></span>
+                    </div>
+                   <div>
+                    <input type="file" name="uploadedFile" />
+                   <!-- <input type="submit" value="Загрузить" />-->
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control width" />
+                <textarea rows=5 asp-for="Description" class="form-control width"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,9 +56,10 @@
             </div>
         </form>
     </div>
+    <div>
+        <a class="btn myBtn m-l-10" asp-action="Index">Back to List</a>
+    </div>
 </div>
 
-<div>
-    <a class="btn myBtn m-l-10" asp-action="Index">Back to List</a>
-</div>
+
 

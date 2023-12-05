@@ -42,28 +42,26 @@ body {
 }
 .img-back {
     background-attachment: fixed;
-    border: 2px solid red;
     background-position: center;
     background-image: url("/image/cinema.jpg");
 }
-
+.btn {padding: 0 10px;
+      font-size:0.7em;
+}
 .myBtn {
     color: #fff;
     background-color: #674EA7;
-    border-color: #351C75;
     text-decoration: none;
 }
 
-    .myBtn:hover {
+ .myBtn:hover {
         color: #fff;
         background-color: #8E7CC3;
-        border-color: #B4A7D6;
         text-decoration: none;
     }
-    .myBtn:active {
+ .myBtn:active {
         color: #fff;
         background-color: #351C75;
-        border-color: #20124D;
         text-decoration: none;
     }
 
@@ -77,4 +75,19 @@ body {
 .m-l-10{
     margin-left:10px;
 }
+.m-l-70 {
+    margin-left: 70px;
+}
+
+.myWrap {
+    flex-wrap:wrap;
+}
+.b_red {
+    border: 2px solid red;
+}
+.b_green {
+    border: 2px solid green;
+}
+
+#showDetails{ max-width: 500px;}
 /*box-shadow: rgba(255,255,255, 0.8) 10px 10px inset; background-color: rgba(255,255,255, 0.7);*/
