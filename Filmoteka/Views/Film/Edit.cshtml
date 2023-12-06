@@ -37,7 +37,7 @@
             <div class="form-group">
                 <div >
                     <label asp-for="Poster" class="control-label"></label>
-                    <input asp-for="Poster" class="form-control width" />
+                    <input asp-for="Poster" class="form-control width" type="hidden" value="~" />
                     <span asp-validation-for="Poster" class="text-danger"></span>
                     <input type="file" name="uploadedFile" />
                 </div>
@@ -58,13 +58,3 @@
     <a class="btn myBtn m-l-10" asp-action="Index">Back to List</a>
 </div>
 
-
-
-                <!--
-
-    <div class="form-group">
-    <label asp-for="Poster" class="control-label"></label>
-    <input asp-for="Poster" class="form-control width" />
-    <span asp-validation-for="Poster" class="text-danger"></span>
-</div>
-                -->

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Filmoteka.Models;
+using System.Text.RegularExpressions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Filmoteka.Controllers
 {
@@ -55,9 +57,11 @@ namespace Filmoteka.Controllers
         {
             if (film.Description == null || film.Description.Length < 10)
                 ModelState.AddModelError("", "Описание фильма должно быть более 10 символов.");
-            if (film.Director == null || !film.Director.Contains(" "))
-                ModelState.AddModelError("", "В строке режиссер должна быть указано Имя и Фамилия");
-
+            if (film.Director != null)
+            { var pattern = new Regex(@"[ .]");
+                var matchResult = pattern.Match(film.Director); 
+            if (!matchResult.Success)   //!film.Director.Contains(@"[ ]{1,}")
+                ModelState.AddModelError("", "В строке режиссер должна быть указано Имя и Фамилия");}
 
             if (uploadedFile != null)
             {
@@ -116,11 +120,11 @@ namespace Filmoteka.Controllers
                 
                 try
                 {
-                    string path = "/image/" + uploadedFile.FileName; // имя файла
+                    string path = "/image/" + uploadedFile.FileName; 
 
                     using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                     {
-                        await uploadedFile.CopyToAsync(fileStream); // копируем файл в поток
+                        await uploadedFile.CopyToAsync(fileStream); 
                     }
 
                     film.Poster = '~' + path;

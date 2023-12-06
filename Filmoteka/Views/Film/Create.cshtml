@@ -36,8 +36,8 @@
             <div class="form-group">
                 <div class="">
                    <label asp-for="Poster" class="control-label"></label>
-                   <input asp-for="Poster" class="form-control width" />
-                   <span asp-validation-for="Poster" class="text-danger"></span>
+                   <input type="hidden" asp-for="Poster" class="form-control width" value="~" />
+                    <span asp-validation-for="Poster" class="text-danger"></span>
                     <input type="file" name="uploadedFile" />
                </div>
             </div>
